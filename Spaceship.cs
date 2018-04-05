@@ -17,15 +17,16 @@ namespace u2_spaceship_Couper
 {
     class Spaceship
     {
-
+        // how many pixels a spaceship will move when a key is pressede
         private int speed = 15;
-        private Point location = new Point(0,0);
 
+        // declaring a rectangle that will be the visual of the ship
         private Rectangle ship;
 
+        // the canvas that the spaceship will be on
         Canvas canvas;
         
-        // constructor
+        // constructor where the canvas is used and the ship is made with a rectangle and added to the canvas with the location set
         public Spaceship(Point location, System.Windows.Controls.Canvas c, Brush b)
         {
             canvas = c;
@@ -39,9 +40,10 @@ namespace u2_spaceship_Couper
             Canvas.SetTop(ship, location.Y);              
         }
 
+        // using the rectangle so it can be accessed in the MainWindow.xaml.cs 
         public Rectangle rect { get { return ship; } }
 
-        //makes the spaceship turn 
+        //makes the spaceship turn by changing the direction of orientation depending on the key pressed
         public int turn(System.Windows.Input.Key k)
         {
             int orientation = 0;
@@ -67,13 +69,12 @@ namespace u2_spaceship_Couper
                 orientation = 4;
             }
             if (k == Key.Q) {
-                Console.WriteLine("In debug");
             }
             return orientation;
         }
 
 
-        // makes the spaceship move in the direction it's moving
+        // makes the spaceship move in the direction of orientation, it moves at the speed delcared at top
         public Point fly(int orientation, Spaceship spaceship, Point location)
         {
             if (orientation == 1)
@@ -92,6 +93,8 @@ namespace u2_spaceship_Couper
             {
                 location.Y += speed;
             }
+            
+            // the following if statements ensure the spaceships don't leave the screen
             if (location.X < 0)
             {
                 location.X = 0;
@@ -141,7 +144,8 @@ namespace u2_spaceship_Couper
                 && location2.Y < location1.Y + 17)
                 )
             {
-                MessageBox.Show("Game over");
+                // display a message stating that the ships have crashed
+                MessageBox.Show("Collision");
             }
 
         }
