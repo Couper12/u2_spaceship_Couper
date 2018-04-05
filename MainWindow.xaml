@@ -9,11 +9,13 @@
         KeyDown="Window_KeyDown"
         >
     <Canvas x:Name="canvas" Width="600" Height="642">
+        
+        <!-- button that will start the game-->
         <Button 
-            x:Name="btn2Players" 
-            Content="start" Click="btn2Players_Click" Width="590" Height="42"/>
+            x:Name="btnStart" 
+            Content="start" Click="btnStart_Click" Width="590" Height="42"/>
        
-      
+      <!-- creates a black background-->
         <Rectangle x:Name="rectBackground" Height="548" Width="590" Canvas.Top="42" Fill="Black">
 
         </Rectangle>
